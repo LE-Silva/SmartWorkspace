@@ -13,9 +13,11 @@ import { ProdutoComponent } from './produto/produto.component';
 import { FornecedorComponent } from './fornecedor/fornecedor.component';
 import { SolicitanteComponent } from './solicitante/solicitante.component';
 import { ArmazemComponent } from './armazem/armazem.component';
+import { VendasComponent } from './vendas/vendas.component';
+import { ComprasComponent } from './compras/compras.component';
 
 @NgModule({
-  declarations: [											
+  declarations: [													
     AppComponent,
       UsuarioComponent,
       NavComponent,
@@ -26,7 +28,9 @@ import { ArmazemComponent } from './armazem/armazem.component';
       ProdutoComponent,
       FornecedorComponent,
       SolicitanteComponent,
-      ArmazemComponent
+      ArmazemComponent,
+      VendasComponent,
+      ComprasComponent
    ],
   imports: [
     BrowserModule,
