@@ -1,0 +1,24 @@
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example text-center">
+  <table class="table table-hover w-75 ms-5">
+    <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Superior</th>
+      <th scope="col">Inscriçao Federal</th>
+      <th scope="col">Status</th>
+      <th scope="col"> </th>
+    </tr>
+    </thead>
+    <tbody *ngFor="let solicitante of solicitantes">
+    <tr class="table-light">
+      <th scope="col">{{solicitante.cdsolicitante}}</th>
+      <th scope="col">{{solicitante.nome}}</th>
+      <th scope="col">{{solicitante.superior}}</th>
+      <th scope="col">{{solicitante.inscfed}}</th>
+      <th scope="col">{{solicitante.status}}</th>
+      <th scope="col"> <button id="detalhessolicitante" class="btn btn-primary"> Detalhes </button> <button id="exclusaosolicitante" class="btn btn-danger ms-2"> Excluir</button></th>
+    </tr>
+    </tbody>
+  </table>
+  </div></div>

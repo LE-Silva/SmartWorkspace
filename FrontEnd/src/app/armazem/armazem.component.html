@@ -1,0 +1,26 @@
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example text-center">
+  <table class="table table-hover w-75 ms-5">
+    <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Descricao</th>
+      <th scope="col">Responsavel</th>
+      <th scope="col">Capacidade Máxima</th>
+      <th scope="col">Em uso</th>
+      <th scope="col">Status<th>
+      <th scope="col"> </th>
+    </tr>
+    </thead>
+    <tbody *ngFor="let armazem of armazens">
+    <tr class="table-light">
+      <th scope="col">{{armazem.id}}</th>
+      <th scope="col">{{armazem.descricao}}</th>
+      <th scope="col">{{armazem.responsavel}}</th>
+      <th scope="col">{{armazem.maxcapacidade}}</th>
+      <th scope="col">{{armazem.emuso}}</th>
+      <th scope="col">{{armazem.status}}</th>
+      <th scope="col"> <button id="detalhessolicitante" class="btn btn-primary"> Detalhes </button> <button id="exclusaosolicitante" class="btn btn-danger ms-2"> Excluir</button></th>
+    </tr>
+    </tbody>
+  </table>
+  </div></div>

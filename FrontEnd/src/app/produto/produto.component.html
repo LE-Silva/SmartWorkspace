@@ -1,0 +1,26 @@
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example text-center">
+  <table class="table table-hover w-75 ms-5">
+    <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Descrição</th>
+      <th scope="col">Tipo</th>
+      <th scope="col">Preço</th>
+      <th scope="col">Estoque</th>
+      <th scope="col">Status</th>
+      <th scope="col"> </th>
+    </tr>
+    </thead>
+    <tbody *ngFor="let produto of produtos">
+    <tr class="table-light">
+      <th scope="col">{{produto.cdproduto}}</th>
+      <th scope="col">{{produto.descricao}}</th>
+      <th scope="col">{{produto.tipo}}</th>
+      <th scope="col">{{produto.preco}}</th>
+      <th scope="col">{{produto.qtdestoque}}</th>
+      <th scope="col">{{produto.status}}</th>
+      <th scope="col"> <button id="detalhescliente" class="btn btn-primary"> Detalhes </button> <button id="exclusaocliente" class="btn btn-danger ms-2"> Excluir</button></th>
+    </tr>
+    </tbody>
+  </table>
+  </div></div>

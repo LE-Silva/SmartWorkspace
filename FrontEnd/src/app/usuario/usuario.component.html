@@ -1,0 +1,87 @@
+<div class="container">
+  <div class="row ">
+      <div class="col-xs-6 col-sm-6 col-md-6 w-25 mt-5">
+        <div class="mt-2 w-auto h-auto" *ngFor="let user of usuarios">
+          <button class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true" (click)="definir_atual(user.username, user.nome, user.cargo, user.email, user.estado, user.cidade, user.cep, user.endereco)">
+            <img src="https://github.com/twbs.png" alt="twbs" class="rounded-circle flex-shrink-0" width="32" height="32">
+            <div class="d-flex gap-0 w-100 justify-content-between">
+              <div>
+                <h6 class="mb-0">{{user.nome}}</h6>
+                <p class="mb-0 opacity-75">Cargo: {{user.cargo}}</p>
+              </div>
+              <small class="opacity-50 text-nowrap">{{user.username}}</small>
+            </div>
+          </button>
+        </div>    
+      </div>
+      <div class="ps-5 mt-5 col-xs-6 col-sm-6 col-md-6 w-75">
+          <div class="ps-5 col-xs-1">
+            <div class="ps-5 row g-5">
+              <div class="ps-5 col-md-7 col-lg-8">
+                <form class="ps-5 needs-validation" novalidate="">
+                  <div class="row g-3">
+                    <div class="col-12">
+                      <label for="firstName" class="form-label">Nome</label>
+                      <input type="text" class="form-control" id="firstName" required="" value="{{usuario_em_exibicao.nome}}">
+                    </div>    
+                    <div class="col-6">
+                      <label for="username" class="form-label">Usuario</label>
+                      <div class="input-group has-validation">
+                        <span class="input-group-text">@</span>
+                        <input type="text" class="form-control" id="username" required="" value="{{usuario_em_exibicao.username}}">
+                      </div>
+                    </div>
+    
+                    <div class="col-6">
+                      <label for="password" class="form-label">Cargo</label>
+                      <div class="input-group has-validation">
+                        <input type="text" class="form-control" id="password" required="" value="{{usuario_em_exibicao.cargo}}">
+                      </div>
+                    </div>
+        
+                    <div class="col-12">
+                      <label for="email" class="form-label">Email <span class="text-muted">(Opcional)</span></label>
+                      <input type="email" class="form-control" id="email" value="{{usuario_em_exibicao.email}}">
+                    </div>
+        
+                    <div class="col-12">
+                      <label for="address" class="form-label">Endereço</label>
+                      <input type="text" class="form-control" id="address" required="" value="{{usuario_em_exibicao.endereco}}">
+                    </div>
+    
+        
+                    <div class="col-md-5">
+                      <label for="estado" class="form-label">Estado</label>
+                      <select class="form-select" id="estado" required="">
+                        <option> SP </option>
+                        <option> SC </option>
+                      </select>
+                    </div>
+        
+                    <div class="col-md-4">
+                      <label for="cidade" class="form-label">Cidade</label>
+                      <select class="form-select" id="cidade" required="">
+                        <option>Garça</option>
+                        <option>Marilia</option>
+                      </select>
+                    </div>
+        
+                    <div class="col-md-3">
+                      <label for="cep" class="form-label">CEP</label>
+                      <input type="text" class="form-control" id="cep" value="{{usuario_em_exibicao.cep}}" required="">
+                    </div>
+                  </div>
+                </form>
+                <div class="col-12 ps-5 mt-3 text-center">
+                  <button class="btn btn-success col-md-2 me-1"> Salvar </button>
+                  <button class="btn btn-primary  col-md-2 me-1"> Novo </button>
+                  <button class="btn btn-secondary  col-md-2 me-1"> Novo </button>
+                  <button class="btn btn-warning col-md-2 me-1"> Inativar </button>
+                  <button class="btn btn-danger  col-md-2 me-1"> Excluir </button>
+                </div>
+              </div>
+            </div>
+          </div>    
+      </div>
+  </div>
+</div>
