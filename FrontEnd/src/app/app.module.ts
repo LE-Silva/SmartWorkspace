@@ -15,9 +15,10 @@ import { SolicitanteComponent } from './solicitante/solicitante.component';
 import { ArmazemComponent } from './armazem/armazem.component';
 import { VendasComponent } from './vendas/vendas.component';
 import { ComprasComponent } from './compras/compras.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
-  declarations: [													
+  declarations: [														
     AppComponent,
       UsuarioComponent,
       NavComponent,
@@ -30,7 +31,8 @@ import { ComprasComponent } from './compras/compras.component';
       SolicitanteComponent,
       ArmazemComponent,
       VendasComponent,
-      ComprasComponent
+      ComprasComponent,
+      LoginComponent
    ],
   imports: [
     BrowserModule,

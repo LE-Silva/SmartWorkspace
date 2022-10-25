@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VendedorComponent implements OnInit {
 
+  selectedVendedor: any;
+
   vendedores = [
     {
       cdvendedor: 1,
@@ -31,6 +33,15 @@ export class VendedorComponent implements OnInit {
       status: "Ativo"
     }
   ]
+
+  selecionarVendededor(vendedor: any){
+    this.selectedVendedor = vendedor;
+  }
+
+  voltar(){
+    this.selectedVendedor = null;
+  }
+
 
   constructor() { }
 

@@ -1,24 +1,119 @@
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example text-center">
-  <table class="table table-hover w-75 ms-5">
-    <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Nome</th>
-      <th scope="col">Tipo</th>
-      <th scope="col">Inscriçao Federal</th>
-      <th scope="col">Status</th>
-      <th scope="col"> </th>
-    </tr>
-    </thead>
-    <tbody *ngFor="let cliente of clientes">
-    <tr class="table-light">
-      <th scope="col">{{cliente.cdcliente}}</th>
-      <th scope="col">{{cliente.nome}}</th>
-      <th scope="col">{{cliente.tipo}}</th>
-      <th scope="col">{{cliente.inscfed}}</th>
-      <th scope="col">{{cliente.status}}</th>
-      <th scope="col"> <button id="detalhescliente" class="btn btn-primary"> Detalhes </button> <button id="exclusaocliente" class="btn btn-danger ms-2"> Excluir</button></th>
-    </tr>
-    </tbody>
-  </table>
-  </div></div>
+<div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example text-start" *ngIf="!selectedCliente">
+    <table class="table table-hover w-75 ms-5" *ngIf="clientes.length != 0">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Tipo</th>
+          <th scope="col">Inscriçao Federal</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let cliente of clientes">
+        <tr class="table-light" (click)="selecionarCliente(cliente)">
+          <th scope="col">{{cliente.cdcliente}}</th>
+          <th scope="col">{{cliente.nome}}</th>
+          <th scope="col">{{cliente.tipo}}</th>
+          <th scope="col">{{cliente.inscfed}}</th>
+          <th scope="col">{{cliente.status}}</th>
+        </tr>
+      </tbody>
+    </table>
+    <table class="table table-hover w-75 ms-5" *ngIf="clientes.length == 0">
+      <tr>
+        Não há clientes cadastrados
+      </tr>
+    </table>
+  </div>
+
+  <div class="bd-example" *ngIf="selectedCliente">
+    <div class="container text-start">
+      <div class="row g-5">
+        <div class="col-md-7 col-lg-8">
+          <button class="btn btn-warning" (click)="voltar()"> Voltar </button>
+          <h4 class="mt-4"> Dados do Cliente </h4>
+          <form class="needs-validation mt-3" novalidate="">
+            <div class="row g-3">
+              <div class="col-sm-2">
+                <label for="cdcliente" class="form-label">Código</label>
+                <input type="text" class="form-control" id="cdcliente" placeholder="" value={{selectedCliente.cdcliente}} required="" readonly="true">
+                <div class="invalid-feedback">
+                  Código do cliente é obrigatório!
+                </div>
+              </div>
+
+              <div class="col-sm-2">
+                <label for="incscliente" class="form-label">CPF</label>
+                <div class="input-group has-validation">
+                  <input type="email" class="form-control" id="incscliente" required="" value="{{selectedCliente.inscfed}}">
+                </div>
+              </div>
+    
+              <div class="col-sm-8">
+                <label for="desccliente" class="form-label">Descrição</label>
+                <input type="text" class="form-control" id="desccliente" placeholder="" value="{{selectedCliente.nome}}" required="">
+                <div class="invalid-feedback">
+                  Nome do cliente não pode ficar em branco!
+                </div>
+              </div>
+
+              <div class="col-sm-2">
+                <label for="clientestatus" class="form-label">Status</label>
+                <select class="form-select" id="clientetatus" required="">
+                  <option> - </option>
+                  <option> Ativo </option>
+                  <option>Inativo</option>
+                  <option>Bloqueado</option>
+                </select>
+              </div>
+
+              <div class="col-sm-3">
+                <label for="clientetipo" class="form-label">Tipo</label>
+                <select class="form-select" id="clientetipo" required="">
+                  <option value=""> - </option>
+                  <option>Consumidor</option>
+                  <option>Revendedor</option>
+                </select>
+              </div>
+    
+              <div class="col-sm-3">
+                <label for="clientedatanasc" class="form-label">Data de Nascimento</label>
+                <div class="input-group has-validation">
+                  <input type="date" class="form-control" id="clientedatanasc" value="{{selectedCliente.datanasc}}" required="">
+                </div>
+              </div>
+    
+              <div class="col-sm-4">
+                <label for="clienteemail" class="form-label">Email <span class="text-muted"></span></label>
+                <input type="email" class="form-control" id="clienteemail" value="{{selectedCliente.email}}">
+              </div>
+              <div class="col-9">
+                <label for="clienteend" class="form-label">Endereço <span class="text-muted"></span></label>
+                <input type="text" class="form-control" id="clienteend" value="{{selectedCliente.endereco}}">
+              </div>
+              <div class="col-3">
+                <label for="clientetel" class="form-label">Telefone <span class="text-muted"></span></label>
+                <input type="text" class="form-control" id="clientetel" value="{{selectedCliente.telefone}}">
+              </div>
+
+            </div>
+    
+            <hr class="my-4">
+    
+            <h4 class="mb-3">Observações</h4>
+            <div class="form-group">
+              <textarea class="form-control" id="vendaobservacoes" rows="3"></textarea>
+            </div>
+    
+            <hr class="my-4">
+          </form>
+          <div class="text-center">
+            <button class="btn btn-success col-md-2 me-1"> Salvar </button>
+            <button class="btn btn-danger col-md-2 me-1"> Excluir </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

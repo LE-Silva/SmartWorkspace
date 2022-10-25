@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClienteComponent implements OnInit {
 
-  clientes = [
+  selectedCliente: any;
+
+  clientes:any = [
     {
       cdcliente: 1,
       nome: "Luis Eduardo Jeronimo da Silva",
@@ -24,13 +26,21 @@ export class ClienteComponent implements OnInit {
       nome: "Luis Eduardo Jeronimo da Silva",
       tipo: "Revendedor",
       inscfed: "00000000000",
-      datanasc: "00/00/0000",
+      datanasc: '',
       endereco: "rua vereador pedro afonso de oliveira, 39",
       email: "teste@gmail.com",
       telefone: "14995874632",
       status: "Ativo"
     }
   ]
+
+  selecionarCliente(cliente: any){
+    this.selectedCliente = cliente
+  }
+
+  voltar(){
+    this.selectedCliente = null;
+  }
 
   constructor() { }
 
