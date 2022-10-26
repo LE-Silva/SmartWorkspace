@@ -15,6 +15,7 @@ import { VendedorComponent } from './vendedor/vendedor.component';
 
 const routes: Routes = [
   {path: 'usuario', component: UsuarioComponent },
+  {path: 'duvidas', component: DuvidasComponent},
   {path: 'cadastros', component: CadastrosComponent},
   {path: 'duvidas', component: DuvidasComponent},
   {path: 'cadastros/clientes', component: ClienteComponent},

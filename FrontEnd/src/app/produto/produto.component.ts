@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProdutoComponent implements OnInit {
 
+  selectedProduto: any;
+
   produtos = [
     {
       cdproduto: 1,
@@ -25,6 +27,14 @@ export class ProdutoComponent implements OnInit {
       status: "Ativo"
     },
   ]
+
+  selecionarProduto(produto: any){
+    this.selectedProduto = produto;
+  }
+
+  voltar(){
+    this.selectedProduto = null;
+  }
 
   constructor() { }
 

@@ -1,26 +1,116 @@
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example text-center">
-  <table class="table table-hover w-75 ms-5">
-    <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Descricao</th>
-      <th scope="col">Responsavel</th>
-      <th scope="col">Capacidade Máxima</th>
-      <th scope="col">Em uso</th>
-      <th scope="col">Status<th>
-      <th scope="col"> </th>
-    </tr>
-    </thead>
-    <tbody *ngFor="let armazem of armazens">
-    <tr class="table-light">
-      <th scope="col">{{armazem.id}}</th>
-      <th scope="col">{{armazem.descricao}}</th>
-      <th scope="col">{{armazem.responsavel}}</th>
-      <th scope="col">{{armazem.maxcapacidade}}</th>
-      <th scope="col">{{armazem.emuso}}</th>
-      <th scope="col">{{armazem.status}}</th>
-      <th scope="col"> <button id="detalhessolicitante" class="btn btn-primary"> Detalhes </button> <button id="exclusaosolicitante" class="btn btn-danger ms-2"> Excluir</button></th>
-    </tr>
-    </tbody>
-  </table>
-  </div></div>
+<div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example text-start" *ngIf="!selectedArmazem">
+    <table class="table table-hover w-75 ms-5" *ngIf="armazens.length != 0">
+      <thead>
+        <tr>
+          <th scope="col">Código</th>
+          <th scope="col">Descrição</th>
+          <th scope="col">Responsavel</th>
+          <th scope="col">Capacidade Máxima</th>
+          <th scope="col">Quantidade em Uso</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let armazem of armazens">
+        <tr class="table-light" (click)="selecionarArmazem(armazem)">
+          <th scope="col">{{armazem.id}}</th>
+          <th scope="col">{{armazem.descricao}}</th>
+          <th scope="col">{{armazem.responsavel}}</th>
+          <th scope="col">{{armazem.maxcapacidade}}</th>
+          <th scope="col">{{armazem.emuso}}</th>
+          <th scope="col">{{armazem.status}}</th>
+        </tr>
+      </tbody>
+    </table>
+    <table class="table table-hover w-75 ms-5" *ngIf="armazens.length == 0">
+      <tr>
+        Não há armazens cadastrados
+      </tr>
+    </table>
+  </div>
+
+  <div class="bd-example" *ngIf="selectedArmazem">
+    <div class="container text-start">
+      <div class="row g-5">
+        <div class="col-md-7 col-lg-8">
+          <button class="btn btn-warning" (click)="voltar()"> Voltar </button>
+          <h4 class="mt-4"> Dados do Armazem </h4>
+          <form class="needs-validation mt-3" novalidate="">
+            <div class="row g-3">
+              <div class="col-sm-2">
+                <label for="cdarmazem" class="form-label">Código</label>
+                <input type="text" class="form-control" id="cdarmazem" placeholder="" value={{selectedArmazem.id}} required="" readonly="true">
+                <div class="invalid-feedback">
+                  Código do armazem é obrigatório!
+                </div>
+              </div>
+    
+              <div class="col-sm-10">
+                <label for="descarmazem" class="form-label">Descrição</label>
+                <input type="text" class="form-control" id="descarmazem" placeholder="" value="{{selectedArmazem.descricao}}" required="">
+                <div class="invalid-feedback">
+                  Descricao do armazem não pode ficar em branco!
+                </div>
+              </div>
+
+              <div class="col-sm-2">
+                <label for="armazemstatus" class="form-label">Status</label>
+                <select class="form-select" id="Vendedortatus" required="">
+                  <option> - </option>
+                  <option> Ativo </option>
+                  <option>Inativo</option>
+                  <option>Bloqueado</option>
+                </select>
+              </div>
+
+              <div class="col-sm-2">
+                <label for="responsavel" class="form-label">Responsavel</label>
+                <input type="text" class="form-control" id="responsavel" placeholder="" value="{{selectedArmazem.responsavel}}" required="">
+                <div class="invalid-feedback">
+                  Responsavel não pode ficar em branco!
+                </div>
+              </div>
+
+              <div class="col-sm-2">
+                <label for="capacidade" class="form-label">Capacidade</label>
+                <input type="text" class="form-control" id="capacidade" placeholder="" value="{{selectedArmazem.maxcapacidade}}" required="">
+                <div class="invalid-feedback">
+                  Responsavel não pode ficar em branco!
+                </div>
+              </div>
+
+              <div class="col-sm-2">
+                <label for="emuso" class="form-label">Em uso</label>
+                <input type="text" class="form-control" id="emuso" placeholder="" value="{{selectedArmazem.emuso}}" required="">
+              </div>
+
+              <div class="col-sm-1">
+                <label for="emusopor" class="form-label">% uso</label>
+                <input type="text" class="form-control" id="emusopor" placeholder="" required="" [value]="calculos(selectedArmazem.emuso, selectedArmazem.maxcapacidade)">
+              </div>
+
+              <div class="col-sm-3">
+                <label for="emusopor" class="form-label">Data de Ateração</label>
+                <input type="date" class="form-control" id="emusopor" placeholder="" required="" readonly="true">
+              </div>
+
+            </div>
+    
+            <hr class="my-4">
+    
+            <h4 class="mb-3">Observações</h4>
+            <div class="form-group">
+              <textarea class="form-control" id="vendaobservacoes" rows="3"></textarea>
+            </div>
+    
+            <hr class="my-4">
+          </form>
+          <div class="text-center">
+            <button class="btn btn-success col-md-2 me-1"> Salvar </button>
+            <button class="btn btn-danger col-md-2 me-1"> Excluir </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

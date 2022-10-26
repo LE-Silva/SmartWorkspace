@@ -1,26 +1,106 @@
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example text-center">
-  <table class="table table-hover w-75 ms-5">
-    <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Descrição</th>
-      <th scope="col">Tipo</th>
-      <th scope="col">Preço</th>
-      <th scope="col">Estoque</th>
-      <th scope="col">Status</th>
-      <th scope="col"> </th>
-    </tr>
-    </thead>
-    <tbody *ngFor="let produto of produtos">
-    <tr class="table-light">
-      <th scope="col">{{produto.cdproduto}}</th>
-      <th scope="col">{{produto.descricao}}</th>
-      <th scope="col">{{produto.tipo}}</th>
-      <th scope="col">{{produto.preco}}</th>
-      <th scope="col">{{produto.qtdestoque}}</th>
-      <th scope="col">{{produto.status}}</th>
-      <th scope="col"> <button id="detalhescliente" class="btn btn-primary"> Detalhes </button> <button id="exclusaocliente" class="btn btn-danger ms-2"> Excluir</button></th>
-    </tr>
-    </tbody>
-  </table>
-  </div></div>
+<div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example text-start" *ngIf="!selectedProduto">
+    <table class="table table-hover w-75 ms-5" *ngIf="produtos.length != 0">
+      <thead>
+        <tr>
+          <th scope="col">Código</th>
+          <th scope="col">Descrição</th>
+          <th scope="col">Tipo</th>
+          <th scope="col">Preço</th>
+          <th scope="col">Quantidade em Estoque</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let produto of produtos">
+        <tr class="table-light" (click)="selecionarProduto(produto)">
+          <th scope="col">{{produto.cdproduto}}</th>
+          <th scope="col">{{produto.descricao}}</th>
+          <th scope="col">{{produto.tipo}}</th>
+          <th scope="col">{{produto.preco}}</th>
+          <th scope="col">{{produto.qtdestoque}}</th>
+          <th scope="col">{{produto.status}}</th>
+        </tr>
+      </tbody>
+    </table>
+    <table class="table table-hover w-75 ms-5" *ngIf="produtos.length == 0">
+      <tr>
+        Não há produtos cadastrados
+      </tr>
+    </table>
+  </div>
+
+  <div class="bd-example" *ngIf="selectedProduto">
+    <div class="container text-start">
+      <div class="row g-5">
+        <div class="col-md-7 col-lg-8">
+          <button class="btn btn-warning" (click)="voltar()"> Voltar </button>
+          <h4 class="mt-4"> Dados do Produto </h4>
+          <form class="needs-validation mt-3" novalidate="">
+            <div class="row g-3">
+              <div class="col-sm-2">
+                <label for="cdproduto" class="form-label">Código</label>
+                <input type="text" class="form-control" id="cdproduto" placeholder="" value={{selectedProduto.cdvendedor}} required="" readonly="true">
+                <div class="invalid-feedback">
+                  Código do Produto é obrigatório!
+                </div>
+              </div>
+    
+              <div class="col-sm-10">
+                <label for="descproduto" class="form-label">Descrição</label>
+                <input type="text" class="form-control" id="descproduto" placeholder="" value="{{selectedProduto.nome}}" required="">
+                <div class="invalid-feedback">
+                  Nome do produto não pode ficar em branco!
+                </div>
+              </div>
+
+              <div class="col-sm-2">
+                <label for="produtostatus" class="form-label">Status</label>
+                <select class="form-select" id="Vendedortatus" required="">
+                  <option> - </option>
+                  <option> Ativo </option>
+                  <option>Inativo</option>
+                  <option>Bloqueado</option>
+                </select>
+              </div>
+
+              <div class="col-sm-3">
+                <label for="produtotipo" class="form-label">Tipo</label>
+                <select class="form-select" id="produtotipo" required="">
+                  <option> - </option>
+                  <option> Comprado </option>
+                  <option>Manufaturado</option>
+                </select>
+              </div>
+    
+              <div class="col-sm-3">
+                <label for="prodpreco" class="form-label">Preço</label>
+                <div class="input-group has-validation">
+                  <input type="text" class="form-control" id="prodpreco" value="R${{selectedProduto.preco}}" required="" readonly="true">
+                </div>
+              </div>
+    
+              <div class="col-sm-4">
+                <label for="qtdestoque" class="form-label">Quantidade em Estoque <span class="text-muted"></span></label>
+                <input type="text" class="form-control" id="qtdestoque" value="{{selectedProduto.qtdestoque}}">
+              </div>
+
+            </div>
+    
+            <hr class="my-4">
+    
+            <h4 class="mb-3">Observações</h4>
+            <div class="form-group">
+              <textarea class="form-control" id="vendaobservacoes" rows="3"></textarea>
+            </div>
+    
+            <hr class="my-4">
+          </form>
+          <div class="text-center">
+            <button class="btn btn-success col-md-2 me-1"> Salvar </button>
+            <button class="btn btn-danger col-md-2 me-1"> Excluir </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
