@@ -39,7 +39,7 @@
             <div class="row g-3">
               <div class="col-sm-2">
                 <label for="cdproduto" class="form-label">Código</label>
-                <input type="text" class="form-control" id="cdproduto" placeholder="" value={{selectedProduto.cdvendedor}} required="" readonly="true">
+                <input type="text" class="form-control" id="cdproduto" placeholder="" value={{selectedProduto.cdproduto}} required="" readonly="true">
                 <div class="invalid-feedback">
                   Código do Produto é obrigatório!
                 </div>
@@ -47,7 +47,7 @@
     
               <div class="col-sm-10">
                 <label for="descproduto" class="form-label">Descrição</label>
-                <input type="text" class="form-control" id="descproduto" placeholder="" value="{{selectedProduto.nome}}" required="">
+                <input type="text" class="form-control" id="descproduto" placeholder="" value="{{selectedProduto.descricao}}" required="">
                 <div class="invalid-feedback">
                   Nome do produto não pode ficar em branco!
                 </div>

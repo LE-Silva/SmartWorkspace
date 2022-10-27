@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Cliente } from '../models/Cliente';
 
 @Component({
   selector: 'app-cliente',
@@ -7,39 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClienteComponent implements OnInit {
 
-  selectedCliente: any;
+  selectedCliente!: Cliente;
 
-  clientes:any = [
-    {
-      cdcliente: 1,
-      nome: "Luis Eduardo Jeronimo da Silva",
-      tipo: "Consumidor",
-      inscfed: "00000000000",
-      datanasc: "00/00/0000",
-      endereco: "rua vereador pedro afonso de oliveira, 39",
-      email: "teste@gmail.com",
-      telefone: "14995874632",
-      status: "Ativo"
-    },
-    {
-      cdcliente: 2,
-      nome: "Luis Eduardo Jeronimo da Silva",
-      tipo: "Revendedor",
-      inscfed: "00000000000",
-      datanasc: '',
-      endereco: "rua vereador pedro afonso de oliveira, 39",
-      email: "teste@gmail.com",
-      telefone: "14995874632",
-      status: "Ativo"
-    }
+  clientes = [
+    new Cliente(5, "Luis Eduardo Jeronimo da Silva", "Teste", "545661", "465165", "7660", "4865465", "8798646", "12458799"),
+    new Cliente(6, "Luis Eduardo Jeronimo da Silva", "Teste2", "545661", "465165", "7660", "4865465", "8798646", "12458799"),
   ]
 
-  selecionarCliente(cliente: any){
+  selecionarCliente(cliente: Cliente){
     this.selectedCliente = cliente
   }
 
   voltar(){
-    this.selectedCliente = null;
+    this.selectedCliente = null as any;
   }
 
   constructor() { }

@@ -6,7 +6,6 @@ import { ClienteComponent } from './cliente/cliente.component';
 import { ComprasComponent } from './compras/compras.component';
 import { DuvidasComponent } from './duvidas/duvidas.component';
 import { FornecedorComponent } from './fornecedor/fornecedor.component';
-import { LoginComponent } from './login/login.component';
 import { ProdutoComponent } from './produto/produto.component';
 import { SolicitanteComponent } from './solicitante/solicitante.component';
 import { UsuarioComponent } from './usuario/usuario.component';

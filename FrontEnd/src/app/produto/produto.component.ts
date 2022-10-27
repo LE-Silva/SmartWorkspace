@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Produto } from '../models/Produto';
 
 @Component({
   selector: 'app-produto',
@@ -7,33 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProdutoComponent implements OnInit {
 
-  selectedProduto: any;
+  selectedProduto!: Produto;
 
   produtos = [
-    {
-      cdproduto: 1,
-      descricao: "Balas",
-      tipo: "Comprado",
-      preco: 0.35,
-      qtdestoque: 0,
-      status: "Ativo"
-    },
-    {
-      cdproduto: 2,
-      descricao: "Celular",
-      tipo: "Manufaturado",
-      preco: 1600.00,
-      qtdestoque: 2,
-      status: "Ativo"
-    },
+    new Produto(5, "Doçes", "Comprado", 0.80, 2000, "Ativo"),
+    new Produto(6, "Refrigerante", "Comprado", 3.65 , 465, "Ativo"),
   ]
 
-  selecionarProduto(produto: any){
+  selecionarProduto(produto: Produto){
     this.selectedProduto = produto;
   }
 
   voltar(){
-    this.selectedProduto = null;
+    this.selectedProduto = null as any;
   }
 
   constructor() { }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Armazem } from '../models/Armazem';
 
 @Component({
   selector: 'app-armazem',
@@ -7,37 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArmazemComponent implements OnInit {
 
-  selectedArmazem: any;
+  selectedArmazem!: Armazem;
 
   armazens = [
-    {
-      id: 1,
-      descricao: "Teste",
-      responsavel: "Luis",
-      maxcapacidade: 800,
-      emuso: 50,
-      status: "Ativo"
-    },
-    {
-      id: 2,
-      descricao: "Teste2",
-      responsavel: "Luis",
-      maxcapacidade: 800,
-      emuso: 50,
-      status: "Ativo"
-    }
+    new Armazem(5, "Almoxarifado", "Luis", 800, 200, "Ativo"),
+    new Armazem(6, "Peodução", "Teste", 5456, 465, "Ativo"),
   ]
 
-  selecionarArmazem(armazem: any){
+  selecionarArmazem(armazem: Armazem){
     this.selectedArmazem = armazem;
   }
 
   voltar(){
-    this.selectedArmazem = null;
+    this.selectedArmazem = null as any;
   }
 
   calculos(emuso: number, maxcapacidade: number){
-    return (emuso/maxcapacidade)*100
+    return ((emuso/maxcapacidade)*100) as Number
   }
 
   constructor() { }
